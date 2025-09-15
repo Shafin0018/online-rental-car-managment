@@ -1,0 +1,97 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body Styling */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #1d2671, #c33764);
+  color: #fff;
+}
+
+/* Container */
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  width: 420px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+/* Headings */
+h1 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Buttons */
+button {
+  display: inline-block;
+  margin: 8px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+
+/* Page-specific button colors */
+.manage-btn { background: #ff6f61; }
+.manage-btn:hover { background: #e45748; }
+
+.config-btn { background: #1abc9c; }
+.config-btn:hover { background: #15967d; }
+
+.backup-btn { background: #3498db; }
+.backup-btn:hover { background: #217dbb; }
+
+.security-btn { background: #9b59b6; }
+.security-btn:hover { background: #7a3ea1; }
+
+.analytics-btn { background: #f39c12; }
+.analytics-btn:hover { background: #d77d0c; }
+
+.escalation-btn { background: #e74c3c; }
+.escalation-btn:hover { background: #c0392b; }
+
+.settings-btn { background: #2ecc71; }
+.settings-btn:hover { background: #27ae60; }
+
+/* Text area & inputs */
+textarea, input {
+  width: 90%;
+  padding: 10px;
+  margin-top: 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  text-align: center;
+}
+
+textarea {
+  height: 80px;
+  resize: none;
+}
+
+/* Back button */
+.back {
+  display: block;
+  margin-top: 20px;
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+}
