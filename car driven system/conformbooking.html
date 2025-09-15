@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm Booking - AIUB Car Rental</title>
+  <link rel="stylesheet" href="conformbooking.css">
+</head>
+<body>
+  <div class="booking-container">
+    <h1>🚘 Confirm Your Booking</h1>
+    <p class="subtitle">Review all details before confirming your ride</p>
+
+    <div class="booking-card">
+      
+      <h2>Driver Information</h2>
+      <p><strong>Name:</strong> John Doe</p>
+      <p><strong>Phone:</strong> +880123456789</p>
+      <p><strong>Rating:</strong> ⭐ 4.8/5</p>
+      <p><strong>Review Comment:</strong> "Very punctual and friendly driver!"</p>
+
+      <h2>Vehicle Information</h2>
+      <p><strong>Type:</strong> Car</p>
+      <p><strong>Plate Number:</strong> AIUB-1234</p>
+      <p><strong>AC / Non-AC:</strong> AC</p>
+      <p><strong>Mileage:</strong> 18 km/l</p>
+
+      <h2>Customer Information</h2>
+      <p><strong>Name:</strong> Md Shafin</p>
+      <p><strong>Contact Number:</strong> +8801987654321</p>
+
+      <h2>Ride Information</h2>
+      <p><strong>Pickup Address:</strong> 123 AIUB Road</p>
+      <p><strong>Destination:</strong> 456 Gulshan</p>
+      <p><strong>Preferred Road:</strong> None</p>
+
+      <h2>Total Cost</h2>
+      <p><strong>Estimated:</strong> 450 BDT</p>
+
+      <h2>Payment Method</h2>
+      <div class="payment-options">
+        <label>
+          <input type="radio" name="payment" value="online" required>
+          Online Payment
+        </label>
+        <label>
+          <input type="radio" name="payment" value="offline" required>
+          Offline Payment
+        </label>
+      </div>
+
+      <div class="booking-buttons">
+        <button class="confirm-btn">✅ Confirm Booking</button>
+        <button class="back-btn" onclick="window.location.href='available-vehicles.html'">⬅ Back</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

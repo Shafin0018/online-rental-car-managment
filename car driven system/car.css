@@ -1,0 +1,79 @@
+/* General Page Styling */
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Card Layout */
+.card {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #444;
+}
+
+/* Form Styles */
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Buttons */
+.btn {
+  margin-top: 15px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  color: #fff;
+}
+
+.btn.add {
+  background-color: #28a745;
+}
+
+.btn.cancel {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.btn.delete {
+  background-color: #dc3545;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}

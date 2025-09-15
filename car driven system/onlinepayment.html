@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Payment Gateway</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .payment-form {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        /* Form Groups */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .main-label {
+            display: block;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .input-label {
+            display: block;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        /* Radio Button Styles */
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .radio-label {
+            cursor: pointer;
+            display: block;
+        }
+
+        .payment-option {
+            padding: 15px;
+            border: 2px solid #e0e6ed;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            position: relative;
+        }
+
+        .payment-option:hover {
+            border-color: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-label .payment-option {
+            border-color: #2ecc71;
+            background: #e8f5e8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .payment-logo {
+            font-weight: bold;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        /* Payment Method Specific Colors */
+        .bkash {
+            position: relative;
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-label .bkash {
+            background: linear-gradient(135deg, #e91e63, #f06292);
+            color: white;
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-label .nagad {
+            background: linear-gradient(135deg, #ff5722, #ff8a50);
+            color: white;
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-label .upay {
+            background: linear-gradient(135deg, #9c27b0, #ba68c8);
+            color: white;
+        }
+
+        /* Input Styles */
+        input[type="tel"],
+        input[type="number"],
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e6ed;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        input[type="tel"]:focus,
+        input[type="number"]:focus,
+        input[type="password"]:focus,
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        input:invalid {
+            border-color: #e74c3c;
+        }
+
+        /* Help Text */
+        .help-text {
+            display: block;
+            color: #7f8c8d;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .error-message {
+            display: block;
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Footer Info */
+        .footer-info {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e6ed;
+        }
+
+        .footer-info p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .payment-form {
+                padding: 25px 20px;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+            }
+            
+            .radio-option {
+                min-width: 100%;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+        }
+
+        /* Animation for form appearance */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .payment-form {
+            animation: slideUp 0.6s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="payment-form">
+            <h1>Online Payment Gateway</h1>
+            <p class="subtitle">Choose your preferred payment method</p>
+            
+            <form id="paymentForm">
+                <!-- Payment Method Selection -->
+                <div class="form-group">
+                    <label class="main-label">Select Payment Method</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="bkash" name="paymentMethod" value="bkash" required>
+                            <label for="bkash" class="radio-label">
+                                <div class="payment-option bkash">
+                                    <span class="payment-logo">bKash</span>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="radio-option">
+                            <input type="radio" id="nagad" name="paymentMethod" value="nagad" required>
+                            <label for="nagad" class="radio-label">
+                                <div class="payment-option nagad">
+                                    <span class="payment-logo">Nagad</span>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="radio-option">
+                            <input type="radio" id="upay" name="paymentMethod" value="upay" required>
+                            <label for="upay" class="radio-label">
+                                <div class="payment-option upay">
+                                    <span class="payment-logo">Upay</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="form-group">
+                    <label for="phoneNumber" class="input-label">Account  Number</label>
+                    <input 
+                        type="tel" 
+                        id="phoneNumber" 
+                        name="phoneNumber" 
+                        placeholder="01XXXXXXXXX"
+                        pattern="[0-9]{11}"
+                        maxlength="11"
+                        required
+                    >
+                    <small class="help-text">Enter 11 digit mobile number</small>
+                </div>
+
+                <!-- Amount -->
+                <div class="form-group">
+                    <label for="amount" class="input-label">Amount (BDT)</label>
+                    <input 
+                        type="number" 
+                        id="amount" 
+                        name="amount" 
+                        placeholder="Enter amount"
+                        min="10"
+                        max="50000"
+                        required
+                    >
+                    <small class="help-text">Minimum: ৳10, Maximum: ৳50,000</small>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password" class="input-label">PIN/Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Enter PIN/Password"
+                        required
+                    >
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group">
+                    <label for="confirmPassword" class="input-label">Confirm PIN/Password</label>
+                    <input 
+                        type="password" 
+                        id="confirmPassword" 
+                        name="confirmPassword" 
+                        placeholder="Re-enter PIN/Password"
+                        required
+                    >
+                    <small class="error-message" id="passwordError" style="display: none;">Passwords do not match</small>
+                </div>
+
+                <!-- Reference -->
+                <div class="form-group">
+                    <label for="reference" class="input-label">Reference (Optional)</label>
+                    <input 
+                        type="text" 
+                        id="reference" 
+                        name="reference" 
+                        placeholder="Enter reference or note"
+                        maxlength="50"
+                    >
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Proceed to Payment</span>
+                </button>
+            </form>
+
+            <div class="footer-info">
+                <p>🔒 Your payment is secured with 256-bit SSL encryption</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('paymentForm');
+        const phoneInput = document.getElementById('phoneNumber');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const passwordError = document.getElementById('passwordError');
+
+        // Phone number validation
+        phoneInput.addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+            if (e.target.value.length > 11) {
+                e.target.value = e.target.value.slice(0, 11);
+            }
+        });
+
+        // Password confirmation validation
+        function validatePasswords() {
+            if (confirmPasswordInput.value && passwordInput.value !== confirmPasswordInput.value) {
+                passwordError.style.display = 'block';
+                confirmPasswordInput.style.borderColor = '#e74c3c';
+                return false;
+            } else {
+                passwordError.style.display = 'none';
+                confirmPasswordInput.style.borderColor = '#ddd';
+                return true;
+            }
+        }
+
+        confirmPasswordInput.addEventListener('input', validatePasswords);
+        passwordInput.addEventListener('input', validatePasswords);
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validatePasswords()) {
+                return;
+            }
+
+            // Basic form validation
+            const phoneNumber = phoneInput.value;
+            if (phoneNumber.length !== 11) {
+                alert('Please enter a valid 11-digit phone number');
+                return;
+            }
+
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked');
+            if (!selectedMethod) {
+                alert('Please select a payment method');
+                return;
+            }
+
+            // Simulate form submission
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.innerHTML = '<span class="btn-text">Processing...</span>';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                alert(`Payment initiated via ${selectedMethod.value.toUpperCase()}\nPhone: ${phoneNumber}\nAmount: ৳${document.getElementById('amount').value}`);
+                submitBtn.innerHTML = '<span class="btn-text">Proceed to Payment</span>';
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

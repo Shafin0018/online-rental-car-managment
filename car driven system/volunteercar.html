@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer Photo Card</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap');
+
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+      background: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card-container {
+      width: 320px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      padding: 15px 20px;
+      text-align: center;
+      border: 2px solid #dc2626;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Bismillah */
+    .bismillah {
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 8px;
+    }
+
+    /* Top Bar */
+    .card-header {
+      background: #dc2626;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 8px 0;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    /* Photo */
+    .photo-frame {
+      width: 140px;
+      height: 140px;
+      margin: 10px auto;
+      border-radius: 50%;
+      border: 4px solid #dc2626;
+      background: linear-gradient(135deg, #fff, #f3f4f6);
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Info Section (center aligned) */
+    .info {
+      margin: 6px 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1f2937;
+      text-align: center;
+    }
+
+    .info strong {
+      color: #374151;
+    }
+
+    .blood-group {
+      font-size: 18px;
+      color: #dc2626;
+      font-weight: 800;
+    }
+
+    /* Foundation Branding */
+    .foundation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 15px;
+      font-weight:900;
+      font-size: 30px;
+      color: #dc2626;
+    }
+
+    .foundation img {
+      width: 45px;
+      height: 45px;
+      margin-right: 8px;
+    }
+
+    .slogan {
+      font-size: 15px;
+      color: #374151;
+      font-weight: 500;
+      margin-top: 3px;
+    }
+
+    /* Footer Bar */
+    .footer-bar {
+      margin-top: 15px;
+      padding: 5px 0;
+      background: #f3f4f6;
+      font-size: 12px;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    /* Download Button */
+    .download-btn {
+      margin-top: 20px;
+      padding: 10px 25px;
+      font-size: 15px;
+      background: #dc2626;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .download-btn:hover {
+      background: #b91c1c;
+    }
+  </style>
+</head>
+<body>
+  <!-- Card -->
+  <div class="card-container" id="volunteerCard">
+    <!-- Bismillah -->
+    <div class="bismillah"> বিসমিল্লাহির রহমানির রাহীম </div>
+
+    <!-- Header -->
+    <div class="card-header">ভলান্টিয়ার কার্ড</div>
+
+    <!-- Photo -->
+    <div class="photo-frame">
+      <img src="image130.jpg" alt="Volunteer Photo">
+    </div>
+
+    <!-- Info (centered) -->
+    <div class="info"><strong>নাম:</strong> নিলয় বিশ্বাস</div>
+    <div class="info blood-group"><strong>রক্তের গ্রুপ:</strong> O+</div>
+    <div class="info"><strong>মোবাইল:</strong> 01339570644</div>
+
+    <!-- Foundation with Logo -->
+    <div class="foundation">
+      <img src="photo logo.jpg" alt="Foundation Logo">
+      বন্ধু মহল ফাউন্ডেশন
+    </div>
+    <div class="slogan">"বন্ধুত্বের শক্তি, মানবতার জয়"</div>
+
+    <!-- Footer Bar -->
+    <div class="footer-bar">
+      Issued by বন্ধু মহল ফাউন্ডেশন 
+    </div>
+  </div>
+
+  <!-- Download Button -->
+  <button class="download-btn" onclick="downloadCard()">Download Card</button>
+
+  <script>
+    function downloadCard() {
+      const card = document.getElementById("volunteerCard");
+      html2canvas(card).then(canvas => {
+        const link = document.createElement("a");
+        link.download = "volunteer_card.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      });
+    }
+  </script>
+</body>
+</html>

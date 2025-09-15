@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+h2 {
+  color: #4a5568;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #2d3748;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+input[type="email"],
+input[type="password"] {
+  padding: 12px 15px;
+  margin-bottom: 5px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.gender-options {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 5px;
+}
+
+.gender-options div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button[type="submit"] {
+  background-color: #667eea;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: #5a67d8;
+}
+
+button[type="reset"] {
+  background-color: #e2e8f0;
+  color: #4a5568;
+}
+
+button[type="reset"]:hover {
+  background-color: #cbd5e0;
+}
+
+.back-btn {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.back-btn a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.back-btn a:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: #e53e3e;
+  font-size: 14px;
+  margin-top: -5px;
+  margin-bottom: 15px;
+  display: none;
+}
+
+.success {
+  border-color: #38a169 !important;
+}
+
+.requirements {
+  font-size: 14px;
+  color: #718096;
+  margin-top: -5px;
+  margin-bottom: 15px;
+}

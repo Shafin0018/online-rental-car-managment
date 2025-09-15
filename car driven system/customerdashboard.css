@@ -1,0 +1,76 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f4f6f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.dashboard-container {
+  background: #fff;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 30px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.profile h2 {
+  font-size: 22px;
+  color: #34495e;
+}
+
+.profile p {
+  margin: 10px 0 20px;
+  font-size: 16px;
+  color: #555;
+}
+
+.dashboard-buttons button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #3498db;
+  color: white;
+  transition: 0.3s;
+}
+
+.dashboard-buttons button:hover {
+  background: #2980b9;
+}
+
+.dashboard-buttons .logout {
+  background: #e74c3c;
+}
+
+.dashboard-buttons .logout:hover {
+  background: #c0392b;
+}
+
+.dashboard-buttons .back {
+  background: #7f8c8d;
+}
+
+.dashboard-buttons .back:hover {
+  background: #606e73;
+}

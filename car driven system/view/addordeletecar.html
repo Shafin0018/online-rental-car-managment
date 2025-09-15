@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Car Booking Management</title>
+  <link rel="stylesheet" href="addordelete.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Car Booking Management</h1>
+
+    <!-- Add Booking Section -->
+    <div class="card">
+      <h2>Add Booking</h2>
+      <form>
+        <label for="customerName">Customer Name</label>
+        <input type="text" id="customerName" placeholder="Enter name" required>
+
+        <label for="carModel">Car Model</label>
+        <input type="text" id="carModel" placeholder="Enter car model" required>
+
+        <label for="date">Booking Date</label>
+        <input type="date" id="date" required>
+
+        <button type="submit" class="btn add">Add Booking</button>
+      </form>
+    </div>
+
+    <!-- Cancel Booking Section -->
+    <div class="card">
+      <h2>Cancel Booking</h2>
+      <form>
+        <label for="cancelId">Booking ID</label>
+        <input type="text" id="cancelId" placeholder="Enter booking ID" required>
+
+        <button type="submit" class="btn cancel">Cancel Booking</button>
+      </form>
+    </div>
+
+    <!-- Delete Booking Section -->
+    <div class="card">
+      <h2>Delete Booking</h2>
+      <form>
+        <label for="deleteId">Booking ID</label>
+        <input type="text" id="deleteId" placeholder="Enter booking ID" required>
+
+        <button type="submit" class="btn delete">Delete Booking</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

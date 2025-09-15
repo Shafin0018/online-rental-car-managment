@@ -1,0 +1,418 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIUB Car Rental - Dashboard</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+      background-color: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .dashboard-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #1e88e5, #0d47a1);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    
+    header h1 {
+      font-weight: 600;
+      font-size: 1.8rem;
+    }
+    
+    .dashboard-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 25px;
+    }
+    
+    .profile-card {
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      background: #e3f2fd;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      color: #1e88e5;
+    }
+    
+    .profile-card h2 {
+      margin-bottom: 5px;
+      color: #1a237e;
+    }
+    
+    .profile-card > p {
+      margin-bottom: 15px;
+      color: #666;
+    }
+    
+    .profile-stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+      padding: 15px 0;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1e88e5;
+    }
+    
+    .stat-label {
+      font-size: 0.85rem;
+      color: #777;
+    }
+    
+    .dashboard-main {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+    
+    .dashboard-card {
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .card-header h3 {
+      color: #1a237e;
+      font-weight: 600;
+    }
+    
+    .card-header i {
+      font-size: 1.5rem;
+      color: #1e88e5;
+    }
+    
+    .dashboard-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+    }
+    
+    .dashboard-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      background: #f5f7fa;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: #333;
+      text-decoration: none;
+    }
+    
+    .dashboard-btn:hover {
+      background: #1e88e5;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .dashboard-btn i {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+    
+    .dashboard-btn span {
+      font-size: 0.9rem;
+    }
+    
+    .back {
+      background: #ffecb3;
+    }
+    
+    .logout {
+      background: #ffcdd2;
+    }
+    
+    .current-rental {
+      text-align: center;
+      padding: 20px 0;
+    }
+    
+    .activity-list {
+      list-style: none;
+    }
+    
+    .activity-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+    
+    .activity-icon {
+      width: 40px;
+      height: 40px;
+      background: #e3f2fd;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: #1e88e5;
+    }
+    
+    .activity-title {
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    
+    .activity-time {
+      font-size: 0.85rem;
+      color: #777;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      color: #777;
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .dashboard-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .dashboard-buttons {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .profile-stats {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .dashboard-buttons {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <header>
+      <h1>AIUB Car Rental Management System</h1>
+    </header>
+
+    <div class="dashboard-content">
+      <div class="profile-card">
+        <div class="profile-img">
+          <i class="fas fa-user"></i>
+        </div>
+        <h2 id="customerName">John Doe</h2>
+        <p>Premium Member</p>
+        
+        <div class="profile-stats">
+          <div class="stat">
+            <div class="stat-value">12</div>
+            <div class="stat-label">Rides</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">4.8</div>
+            <div class="stat-label">Rating</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">2</div>
+            <div class="stat-label">Vehicles</div>
+          </div>
+        </div>
+        
+        <p>📞 <span id="customerPhone">+880123456789</span></p>
+        <p>✉️ john.doe@example.com</p>
+      </div>
+      
+      <div class="dashboard-main">
+        <div class="dashboard-card">
+          <div class="card-header">
+            <h3>Quick Actions</h3>
+            <i class="fas fa-bolt"></i>
+          </div>
+          <div class="dashboard-buttons">
+            <button class="dashboard-btn" onclick="window.location.href='browsecar.html'">
+              <i class="fas fa-car"></i>
+              <span>Browse Cars</span>
+            </button>
+            
+            <button class="dashboard-btn" onclick="window.location.href='invoice.html'">
+              <i class="fas fa-history"></i>
+              <span>Ride History</span>
+            </button>
+            
+            <button class="dashboard-btn" onclick="window.location.href='invoice.html'">
+              <i class="fas fa-credit-card"></i>
+              <span>Payments</span>
+            </button>
+            
+            <button class="dashboard-btn back" onclick="window.location.href='loginpage.html'">
+              <i class="fas fa-arrow-left"></i>
+              <span>Back to Login</span>
+            </button>
+            
+            <button class="dashboard-btn logout" onclick="window.location.href='dashboard.html'">
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Logout</span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="dashboard-card">
+          <div class="card-header">
+            <h3>Current Rental</h3>
+            <i class="fas fa-calendar-check"></i>
+          </div>
+          <div class="current-rental">
+            <p>You don't have an active rental at the moment.</p>
+            <button class="dashboard-btn" style="margin-top: 15px;" onclick="window.location.href='browsecar.html'">
+              <i class="fas fa-search"></i>
+              <span>Find a Car</span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="dashboard-card recent-activity">
+          <div class="card-header">
+            <h3>Recent Activity</h3>
+            <i class="fas fa-list"></i>
+          </div>
+          <ul class="activity-list">
+            <li class="activity-item">
+              <div class="activity-icon">
+                <i class="fas fa-car"></i>
+              </div>
+              <div class="activity-content">
+                <div class="activity-title">Toyota Corolla rental completed</div>
+                <div class="activity-time">August 12, 2023 • 2 hours 30 mins • $45.75</div>
+              </div>
+            </li>
+            <li class="activity-item">
+              <div class="activity-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="activity-content">
+                <div class="activity-title">You rated a driver 5 stars</div>
+                <div class="activity-time">september 12, 2025</div>
+              </div>
+            </li>
+            <li class="activity-item">
+              <div class="activity-icon">
+                <i class="fas fa-credit-card"></i>
+              </div>
+              <div class="activity-content">
+                <div class="activity-title">Payment method updated</div>
+                <div class="activity-time">september 10, 2025</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>&copy; 2023 AIUB Car Rental Management System. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Function to handle logout
+    function logout() {
+      if (confirm("Are you sure you want to logout?")) {
+        // In a real application, you would clear session/token here
+        window.location.href = "login.html";
+      }
+    }
+    
+    // Function to load user data (simulated)
+    function loadUserData() {
+      // In a real application, this would come from an API or session
+      const userData = {
+        name: "John Doe",
+        phone: "+880123456789",
+        email: "john.doe@example.com",
+        membership: "Premium Member",
+        rides: 12,
+        rating: 4.8,
+        vehicles: 2
+      };
+      
+      // Update the DOM with user data
+      document.getElementById('customerName').textContent = userData.name;
+      document.getElementById('customerPhone').textContent = userData.phone;
+    }
+    
+    // Load user data when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      loadUserData();
+    });
+  </script>
+</body>
+</html>

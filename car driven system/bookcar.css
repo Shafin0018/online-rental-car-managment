@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f4f6f9;
+  padding: 20px;
+}
+
+.page-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  color: #2c3e50;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+header .back-dashboard {
+  text-decoration: none;
+  background: #7f8c8d;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+header .back-dashboard:hover {
+  background: #606e73;
+}
+
+.vehicle-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.vehicle-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.vehicle-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.vehicle-card h2 {
+  margin-bottom: 12px;
+  color: #3498db;
+}
+
+.vehicle-card p {
+  margin: 4px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.card-buttons button {
+  flex: 1;
+  padding: 10px;
+  margin: 4px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.card-buttons button:first-child {
+  background: #27ae60; /* Book Vehicle */
+  color: white;
+}
+
+.card-buttons button:first-child:hover {
+  background: #1e8449;
+}
+
+.card-buttons button:last-child {
+  background: #3498db; /* Chat with Driver */
+  color: white;
+}
+
+.card-buttons button:last-child:hover {
+  background: #2980b9;
+}
